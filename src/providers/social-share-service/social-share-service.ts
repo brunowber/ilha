@@ -15,11 +15,11 @@ export class SocialShareServiceProvider {
     }
 
     shareWhatsAppFoto(som: Soms): void{
-      this.socialShare.shareViaWhatsApp(null,"www/"+som.img_src, null);
+      this.socialShare.shareViaWhatsApp(null,"www/"+som.img_src, "https://play.google.com/store/apps/details?id=ilha.barbados.frases");
     }
 
     shareTwitter(som: Soms): void{
-      this.socialShare.shareViaTwitter(null,"www/"+som.img_src, null);
+      this.socialShare.shareViaTwitter(null,"www/"+som.img_src, "https://play.google.com/store/apps/details?id=ilha.barbados.frases");
     }
 
     shareInstagram(som: Soms): void{
@@ -27,8 +27,6 @@ export class SocialShareServiceProvider {
     }
 
     shareFacebook(som: Soms): void{
-      this.socialShare.shareViaFacebook(null,"www/"+som.img_src, null);
+      this.socialShare.shareViaFacebook(null,"www/"+som.img_src, "https://play.google.com/store/apps/details?id=ilha.barbados.frases");
     }
-
-
 }
