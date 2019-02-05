@@ -1,7 +1,7 @@
 import { Soms } from '../../models/soms';
 import { SoundServiceProvider } from '../../providers/sound-service/sound-service';
 import { Component } from '@angular/core';
-import { NavController, ActionSheetController } from 'ionic-angular';
+import { NavController, ActionSheetController, Platform } from 'ionic-angular';
 import { SocialShareServiceProvider } from '../../providers/social-share-service/social-share-service';
 import { CargaInicialProvider } from '../../providers/carga-inicial/carga-inicial';
 
@@ -12,6 +12,7 @@ import { CargaInicialProvider } from '../../providers/carga-inicial/carga-inicia
 export class CauePage {
 
   soms: any[] = [];
+  height: number = 140;
 
   constructor(
     public navCtrl: NavController,
@@ -19,9 +20,13 @@ export class CauePage {
     private socialShare: SocialShareServiceProvider,
     public actionSheetCtrl: ActionSheetController,
     public cargaInicialProv: CargaInicialProvider,
+    public platform: Platform,
   ) { }
 
   ionViewDidEnter(): void {
+    if (this.platform.is("tablet")){
+      this.height = 250;
+    }
     if (this.soms.length == 0) {
       this.cargaInicial("101", "cinco_anos_sem_fuder.mp3", "cinco_anos_sem_fuder.jpeg")
       this.cargaInicial("102", "cu_blindado.mp3", "cu_blindado.jpeg")
@@ -37,6 +42,12 @@ export class CauePage {
       this.cargaInicial("112", "talarico.mp3", "talarico.jpeg")
       this.cargaInicial("113", "labio_vaginal.mp3", "labio_vaginal.jpeg")
       this.cargaInicial("114", "as_namoradinhas.mp3", "as_namoradinhas.jpeg")
+    }
+  }
+
+  swipe(event: any): void {
+    if(event.direction === 4) {
+      this.navCtrl.parent.select(1);
     }
   }
 

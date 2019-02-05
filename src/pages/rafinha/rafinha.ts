@@ -45,6 +45,12 @@ export class RafinhaPage {
     }
   }
 
+  swipe(event: any): void {
+    if(event.direction === 2) {
+      this.navCtrl.parent.select(1);
+    }
+  }
+
   play(som: Soms): void {
     this.soundService.play(som.id)
   }

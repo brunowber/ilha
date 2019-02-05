@@ -38,6 +38,15 @@ export class PcPage {
     }
   }
 
+  swipe(event: any): void {
+    if(event.direction === 2) {
+      this.navCtrl.parent.select(2);
+    }
+    if(event.direction === 4) {
+      this.navCtrl.parent.select(0);
+    }
+  }
+
   play(som: Soms): void {
     console.log(som)
     this.soundService.play(som.id)
