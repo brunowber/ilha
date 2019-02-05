@@ -1,19 +1,26 @@
 import { Component } from '@angular/core';
 
-import { AboutPage } from '../about/about';
-import { ContactPage } from '../contact/contact';
-import { HomePage } from '../home/home';
+import { PcPage } from '../pc/pc';
+import { CauePage } from '../caue/caue';
+import { RafinhaPage } from '../rafinha/rafinha';
+import { AdmobProvider } from '../../providers/admob/admob';
 
 @Component({
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
 
-  tab1Root = HomePage;
-  tab2Root = AboutPage;
-  tab3Root = ContactPage;
+  tab1Root = RafinhaPage;
+  tab2Root = PcPage;
+  tab3Root = CauePage;
 
-  constructor() {
+  constructor(
+    public admob: AdmobProvider,
+  ) {
+    this.admob.showBanner();
 
+    setInterval(() => {
+      this.admob.showInterstitial()
+    }, 300000);
   }
 }

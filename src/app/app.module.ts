@@ -1,40 +1,55 @@
+import { PcPage } from './../pages/pc/pc';
+import { RafinhaPage } from './../pages/rafinha/rafinha';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
+import { CauePage } from '../pages/caue/caue';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { NativeAudio } from '@ionic-native/native-audio';
+import { SoundServiceProvider } from '../providers/sound-service/sound-service';
+import { AdmobProvider } from '../providers/admob/admob';
+import { AdMobFree } from '@ionic-native/admob-free';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { SocialShareServiceProvider } from '../providers/social-share-service/social-share-service';
+import { CargaInicialProvider } from '../providers/carga-inicial/carga-inicial';
+
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
+    PcPage,
+    CauePage,
+    RafinhaPage,
     TabsPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, {tabsPlacement: 'top'})
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
+    PcPage,
+    CauePage,
+    RafinhaPage,
     TabsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    NativeAudio,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    SoundServiceProvider,
+    AdmobProvider,
+    AdMobFree,
+    SocialSharing,
+    SocialShareServiceProvider,
+    CargaInicialProvider,
   ]
 })
 export class AppModule {}

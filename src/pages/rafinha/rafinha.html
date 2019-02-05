@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <img alt="Foto Rafinha" height="140" src="assets/imgs/rafinha/rafinha.jpeg" />
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+
+        <ion-col col-6 *ngFor="let som of soms">
+          <img width=80 height=80 src={{som.img_src}} (press)="presentActionSheet(som)"  (click)="play(som)" />
+        </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>
