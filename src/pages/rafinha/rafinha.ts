@@ -1,7 +1,7 @@
 import { Soms } from './../../models/soms';
 import { SoundServiceProvider } from '../../providers/sound-service/sound-service';
 import { Component } from '@angular/core';
-import { NavController, ActionSheetController } from 'ionic-angular';
+import { NavController, ActionSheetController, Platform } from 'ionic-angular';
 import { SocialShareServiceProvider } from '../../providers/social-share-service/social-share-service';
 import { CargaInicialProvider } from '../../providers/carga-inicial/carga-inicial';
 
@@ -12,6 +12,7 @@ import { CargaInicialProvider } from '../../providers/carga-inicial/carga-inicia
 export class RafinhaPage {
 
   soms: any[] = [];
+  height: number = 140;
 
   constructor(
     public navCtrl: NavController,
@@ -19,9 +20,13 @@ export class RafinhaPage {
     public actionSheetCtrl: ActionSheetController,
     public socialShare: SocialShareServiceProvider,
     public cargaInicialProv: CargaInicialProvider,
+    public platform: Platform,
   ) { }
 
   ionViewDidEnter(): void {
+    if (this.platform.is("tablet")){
+      this.height = 250;
+    }
     if (this.soms.length == 0) {
       console.log("entrou no som")
       this.cargaInicial("1", "agua_na_boca.mp3", "agua_na_boca.jpeg")

@@ -1,7 +1,7 @@
 import { Soms } from '../../models/soms';
 import { SoundServiceProvider } from '../../providers/sound-service/sound-service';
 import { Component } from '@angular/core';
-import { NavController, ActionSheetController } from 'ionic-angular';
+import { NavController, ActionSheetController, Platform } from 'ionic-angular';
 import { AdmobProvider } from '../../providers/admob/admob';
 import { SocialShareServiceProvider } from '../../providers/social-share-service/social-share-service';
 import { CargaInicialProvider } from '../../providers/carga-inicial/carga-inicial';
@@ -12,7 +12,8 @@ import { CargaInicialProvider } from '../../providers/carga-inicial/carga-inicia
 })
 export class PcPage {
 
-  soms: any[] = []
+  soms: any[] = [];
+  height: number = 140;
 
   constructor(
     public navCtrl: NavController,
@@ -20,9 +21,13 @@ export class PcPage {
     private socialShare: SocialShareServiceProvider,
     public actionSheetCtrl: ActionSheetController,
     public cargaInicialProv: CargaInicialProvider,
+    public platform: Platform,
   ) { }
 
   ionViewDidEnter(): void {
+    if (this.platform.is("tablet")){
+      this.height = 250;
+    }
     if (this.soms.length == 0) {
       this.cargaInicial("201", "agora_eu_to_ne.mp3", "agora_eu_to_ne.jpeg")
       this.cargaInicial("202", "asmr_dela.mp3", "asmr_dela.jpeg")
