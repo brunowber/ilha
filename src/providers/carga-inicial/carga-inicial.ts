@@ -10,10 +10,10 @@ export class CargaInicialProvider {
   constructor() {}
 
   cargaInicial(id: string, caminho_audio: string, caminho_imagem: string, pessoa: string): Soms {
-    console.log("carga inicial")
     let som: Soms = new Soms(id);
     som.img_src = this.imagem_caminho_comum + pessoa + "/" + caminho_imagem;
     som.sound_src = this.som_caminho_comum + pessoa + "/" + caminho_audio;
+    console.log("carga inicial: "+ som)
     return som;
   }
 }

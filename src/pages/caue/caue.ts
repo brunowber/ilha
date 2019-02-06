@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { NavController, ActionSheetController, Platform } from 'ionic-angular';
 import { SocialShareServiceProvider } from '../../providers/social-share-service/social-share-service';
 import { CargaInicialProvider } from '../../providers/carga-inicial/carga-inicial';
+import { PresentActionProvider } from '../../providers/present-action/present-action';
 
 @Component({
   selector: 'page-caue',
@@ -17,10 +18,10 @@ export class CauePage {
   constructor(
     public navCtrl: NavController,
     public soundService: SoundServiceProvider,
-    private socialShare: SocialShareServiceProvider,
     public actionSheetCtrl: ActionSheetController,
     public cargaInicialProv: CargaInicialProvider,
     public platform: Platform,
+    public presentAction: PresentActionProvider,
   ) { }
 
   ionViewDidEnter(): void {
@@ -56,62 +57,17 @@ export class CauePage {
   }
 
   play(som: Soms): void {
-    this.soundService.play(som.id)
+    this.soundService.play(som.id, som.sound_src)
   }
 
   cargaInicial(id: string, caminho_audio: string, caminho_imagem: string): void {
     let som:Soms = this.cargaInicialProv.cargaInicial(id, caminho_audio, caminho_imagem, "caue")
     this.soms.push(som)
-    this.soundService.preload(som.id, som.sound_src);
   }
 
   public presentActionSheet(som: Soms): void {
-    let actionSheet = this.actionSheetCtrl.create({
-      title: 'Selecione aonde deseja compartilhar',
-      buttons: [
-        {
-          text: 'Compartilhar som no WhatsApp',
-          icon: 'logo-whatsapp',
-          handler: () => {
-            this.socialShare.shareWhatsApp(som);
-          }
-        },
-        {
-          text: 'Compartilhar foto no WhatsApp',
-          icon: 'logo-whatsapp',
-          handler: () => {
-            this.socialShare.shareWhatsAppFoto(som);
-          }
-        },
-        {
-          text: 'Compartilhar no Twitter',
-          icon: 'logo-twitter',
-          handler: () => {
-            this.socialShare.shareTwitter(som)
-          }
-        },
-        {
-          text: 'Compartilhar no Facebook',
-          icon: 'logo-facebook',
-          handler: () => {
-            this.socialShare.shareFacebook(som)
-          }
-        },
-        {
-          text: 'Compartilhar no Instagram',
-          icon: 'logo-instagram',
-          handler: () => {
-            this.socialShare.shareInstagram(som)
-          }
-        },
-        {
-          text: 'Cancelar',
-          role: 'cancel'
-        }
-      ]
-    });
+    let actionSheet = this.presentAction.PresentActionSheet(som);
     actionSheet.present();
   }
-
 
 }

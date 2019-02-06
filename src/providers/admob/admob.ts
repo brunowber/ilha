@@ -30,7 +30,7 @@ export class AdmobProvider {
   showInterstitial() {
     if (this.platform.is('cordova')) {
       let interstitialConfig: AdMobFreeInterstitialConfig = {
-        isTesting: true,
+        isTesting: false,
         autoShow: true,
         id: "ca-app-pub-8004728799643039/1679678297",
       };

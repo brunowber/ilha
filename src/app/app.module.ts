@@ -18,6 +18,8 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { SocialShareServiceProvider } from '../providers/social-share-service/social-share-service';
 import { CargaInicialProvider } from '../providers/carga-inicial/carga-inicial';
 import { AboutPage } from '../pages/about/about';
+import { ToastProvider } from '../providers/toast/toast';
+import { PresentActionProvider } from '../providers/present-action/present-action';
 
 
 @NgModule({
@@ -53,6 +55,8 @@ import { AboutPage } from '../pages/about/about';
     SocialSharing,
     SocialShareServiceProvider,
     CargaInicialProvider,
+    ToastProvider,
+    PresentActionProvider,
   ]
 })
 export class AppModule {}
