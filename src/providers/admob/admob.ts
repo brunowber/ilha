@@ -2,12 +2,6 @@ import { Injectable } from '@angular/core';
 import { AdMobFree, AdMobFreeBannerConfig, AdMobFreeInterstitialConfig } from '@ionic-native/admob-free';
 import { Platform } from 'ionic-angular';
 
-/*
-  Generated class for the AdmobProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class AdmobProvider {
 
@@ -36,7 +30,7 @@ export class AdmobProvider {
   showInterstitial() {
     if (this.platform.is('cordova')) {
       let interstitialConfig: AdMobFreeInterstitialConfig = {
-        isTesting: false,
+        isTesting: true,
         autoShow: true,
         id: "ca-app-pub-8004728799643039/1679678297",
       };

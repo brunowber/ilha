@@ -17,6 +17,7 @@ import { AdMobFree } from '@ionic-native/admob-free';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { SocialShareServiceProvider } from '../providers/social-share-service/social-share-service';
 import { CargaInicialProvider } from '../providers/carga-inicial/carga-inicial';
+import { AboutPage } from '../pages/about/about';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { CargaInicialProvider } from '../providers/carga-inicial/carga-inicial';
     PcPage,
     CauePage,
     RafinhaPage,
-    TabsPage
+    TabsPage,
+    AboutPage,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,8 @@ import { CargaInicialProvider } from '../providers/carga-inicial/carga-inicial';
     PcPage,
     CauePage,
     RafinhaPage,
-    TabsPage
+    TabsPage, 
+    AboutPage,
   ],
   providers: [
     StatusBar,

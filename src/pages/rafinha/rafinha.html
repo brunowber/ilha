@@ -5,10 +5,10 @@
 </ion-header>
 
 <ion-content padding>
-  <div class="main-content" (swipe)="swipe($event)">
+  <div (swipe)="swipe($event)">
     <ion-grid>
       <ion-row>
-          <ion-col col-md-4 col-xl-3 col-lg-3 col-sm-6 col-xs-12 col-6 *ngFor="let som of soms">
+        <ion-col col-md-4 col-xl-3 col-lg-3 col-sm-6 col-xs-12 col-6 *ngFor="let som of soms">
           <img width=80 height=80 src={{som.img_src}} (press)="presentActionSheet(som)" (click)="play(som)" />
         </ion-col>
       </ion-row>

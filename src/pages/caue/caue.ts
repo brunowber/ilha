@@ -46,6 +46,10 @@ export class CauePage {
   }
 
   swipe(event: any): void {
+    console.log(event.direction)
+    if(event.direction === 2) {
+      this.navCtrl.parent.select(3);
+    }
     if(event.direction === 4) {
       this.navCtrl.parent.select(1);
     }
